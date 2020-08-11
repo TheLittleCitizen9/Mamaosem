@@ -7,7 +7,6 @@ namespace Mamaosem
     {
         static void Main(string[] args)
         {
-            //HouseCake houseCake = new HouseCake();
             FinalStation finalStation = new FinalStation();
             ProductionLine productionLine = new ProductionLine(finalStation);
             HouseCake houseCake = productionLine.CreateNewCake();
