@@ -8,7 +8,6 @@ namespace Mamaosem
 {
     public class FinalStation : Station
     {
-        //private HouseCake _houseCake;
         private const int STATION_NUMBER = 2;
         public FinalStation() : base(STATION_NUMBER)
         {
@@ -21,10 +20,10 @@ namespace Mamaosem
 
         public void SaveCakeInStorage()
         {
-            Console.WriteLine("Entering cake to storage");
             HouseCake houseCake = _houseCakes.Dequeue();
-            ExpirationDate(ref houseCake);
-            CreationDate(ref houseCake);
+            houseCake.ExpiryDate = SetExpirationDate(houseCake.ExpiryDate);
+            Console.WriteLine("Entering cake to storage");
+            houseCake.ProductionTime = SetCreationDate();
 
             string path = @"storage.storage";
             using (StreamWriter sw = File.CreateText(path))
@@ -46,15 +45,16 @@ namespace Mamaosem
             }
         }
 
-        public void ExpirationDate(ref HouseCake houseCake)
+        public DateTime SetExpirationDate(DateTime expiryDate)
         {
             DateTime today = new DateTime();
-            houseCake.ExpiryDate = today.AddDays(14);
+            expiryDate = today.AddDays(14);
+            return expiryDate;
         }
 
-        public void CreationDate(ref HouseCake houseCake)
+        public DateTime SetCreationDate()
         {
-            houseCake.ProductionTime = new DateTime();
+            return new DateTime();
         }
     }
 }

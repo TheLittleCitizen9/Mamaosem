@@ -12,6 +12,7 @@ namespace Mamaosem
             HouseCake houseCake = productionLine.CreateNewCake();
             Console.WriteLine(houseCake.ToString());
             productionLine.StartProductionLine(houseCake);
+            
         }
     }
 }
